@@ -1,0 +1,9 @@
+#firewall:
+#  title: 'Firewall'
+#  url: 'http://10.1.1.1'
+automatiserar:
+  title: 'Automatiserar'
+  url: 'https://www.automatiserar.se/'
+cookbook:
+  title: 'Cookbook'
+  url: 'https://www.home-assistant.io/cookbook/'

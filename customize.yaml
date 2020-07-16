@@ -1,0 +1,83 @@
+device_tracker.508cb1c25812:
+  hidden: true
+device_tracker.aragorn:
+  hidden: true
+device_tracker.aragorn_tap0:
+  hidden: true
+device_tracker.frodo:
+  hidden: true
+device_tracker.boom:
+  hidden: true
+device_tracker.Verisure:
+  hidden: true
+device_tracker.Chromecast:
+  hidden: true
+device_tracker.chromecastaudio:
+  hidden: true
+device_tracker.familjensipad:
+  hidden: true
+device_tracker.oliviasipad:
+  hidden: true
+sensor.hall_overvaning_humidity:
+  hidden: true
+sensor.vardagsrum_humidity:
+  hidden: true
+sun.sun:
+  hidden: true
+binary_sensor.fin_entre:
+  hidden: true
+binary_sensor.vardagsrum:
+  hidden: true
+device_tracker.tellstickznetlite:
+  hidden: true
+sensor.gastrum_humidity:
+  hidden: true
+sensor.yr_symbol:
+  hidden: true
+binary_sensor.groventre:
+  hidden: true
+media_player.samsung_tv_remote:
+  hidden: true
+
+sensor.rum_temperature:
+  friendly_name: Gästrum
+sensor.yr_temperature:
+  friendly_name: Ute
+sensor.stugan_temperature:
+  friendly_name: Stugan
+sensor.ssl_certificate_expiry:
+  friendly_name: Certifikat gullin.com (lets encrypt)
+
+sensor.yr_humidity:
+  friendly_name: Relativ luftfuktighet
+  icon: mdi:water-percent
+sensor.yr_cloudiness:
+  friendly_name: Molnighet
+  icon: mdi:cloud
+
+switch.sovrum:
+  icon: mdi:sleep
+switch.fin_entre:
+  icon: mdi:floor-lamp
+switch.tv_rum:
+  icon: mdi:television-classic
+switch.tv_rum2:
+  icon: mdi:television-classic
+switch.vardagsrum:
+  icon: mdi:floor-lamp
+switch.grov_entre:
+  icon: mdi:floor-lamp
+switch.vitrinskap:
+  icon: mdi:light-switch 
+switch.chillibelysning:
+  icon: mdi:flower
+  state_color: true
+
+
+switch.ytterbelysning_hus:
+  icon: mdi:home-floor-1 
+switch.ytterbelysning_garage:
+  icon: mdi:home-floor-2
+switch.05665700bcddc295da22:
+  icon: mdi:home-floor-3
+  assumed_state: true

@@ -1,0 +1,71 @@
+- alias: Ytterbelysning Tand
+  trigger:
+  - entity_id: switch.rela_3
+    platform: state
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: homeassistant.turn_on
+    entity_id: group.ytterbelysning
+  - delay:
+      seconds: 1
+  - service: homeassistant.turn_on
+    entity_id: group.ytterbelysning
+  - delay:
+      seconds: 2
+  - service: homeassistant.turn_on
+    entity_id: group.ytterbelysning
+  id: 52d069350c52476585aa4dd377cedc0b
+- alias: Ytterbelysning Slack
+  trigger:
+  - entity_id: switch.rela_3
+    platform: state
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+  - service: homeassistant.turn_off
+    entity_id: group.ytterbelysning
+  - delay:
+      seconds: 1
+  - service: homeassistant.turn_off
+    entity_id: group.ytterbelysning
+  - delay:
+      seconds: 2
+  - service: homeassistant.turn_off
+    entity_id: group.ytterbelysning
+  id: 22f4c005331d4153951e10137f60d60e
+- id: '1594377954446'
+  alias: New Automation
+  description: wsd
+  trigger:
+  - event: sunrise
+    platform: sun
+  condition: []
+  action:
+  - data: {}
+    entity_id: switch.sovrum
+    service: automation.turn_off
+- id: '1594380295871'
+  alias: New Automation
+  description: asdas
+  trigger:
+  - event: sunrise
+    platform: sun
+  condition: []
+  action:
+  - data: {}
+    entity_id: automation.ytterbelysning_tand
+    service: automation.turn_on
+- id: '1594506078367'
+  alias: Ny automation
+  description: N
+  trigger:
+  - event: sunrise
+    platform: sun
+  condition: []
+  action:
+  - data: {}
+    entity_id: automation.chillibelysning_av_helg
+    service: automation.turn_on

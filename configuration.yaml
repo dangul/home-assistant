@@ -1,0 +1,119 @@
+homeassistant:
+  name: !secret name
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: 11
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret time_zone
+  customize: !include customize.yaml
+  auth_providers:
+    - type: homeassistant
+    - type: trusted_networks
+      trusted_networks:
+        - !secret trusted_network1
+        - !secret trusted_network2
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+  javascript_version: latest
+
+system_health:
+
+# Enables configuration UI
+config:
+
+http:
+        #  server_host: 10.1.1.2
+
+logger:
+  default: critical
+  logs:
+    # log level for HA core
+    homeassistant.core: debug
+
+updater:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Weather prediction
+sensor:
+  - platform: yr
+    forecast: 24
+    monitored_conditions:
+      - temperature
+      - symbol
+      - windSpeed
+      - pressure
+      - windDirection
+      - humidity
+      - fog
+      - cloudiness
+
+  - platform: syncthru
+    resource: http://10.1.1.254
+    name: Samsung ML1865W
+
+# Pushbullet
+notify:
+  - name: pushdaniel
+    platform: pushbullet
+    api_key: !secret pushbullet_api_key
+
+# Telldus
+tellduslive:
+  #host: !secret telldus_localip
+  host: 10.1.6.2
+
+# Tuya
+tuya:
+  username: !secret tuya_username 
+  password: !secret tuya_password
+  country_code: !secret tuya_country
+
+# Tibber
+tibber:
+  access_token: 41IrXTCy1S_38L8fstrsd7VrNN4YDg9SautfPtiPSFM
+
+# Workday
+binary_sensor:
+  - platform: workday
+    country: SE
+    workdays: [mon, tue, wed, thu, fri, sun]
+#    excludes: [sat, sun, holiday]
+    add_holidays:
+      - '2020-04-30'
+      - '2020-05-01'
+      - '2020-05-21'
+      - '2020-05-22'
+      - '2020-06-19'
+      - '2020-06-20'
+      - '2020-10-30'
+      - '2020-12-24'
+      - '2020-12-25'
+      - '2020-12-28'
+      - '2020-12-29'
+      - '2020-12-30'
+      - '2020-12-31'
+
+mobile_app:
+
+# Other
+group: !include groups.yaml
+automation: !include_dir_merge_list automations
+script: !include scripts.yaml
+panel_iframe: !include panels-iframe.yaml
+

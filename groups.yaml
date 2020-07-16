@@ -1,0 +1,47 @@
+lampor_nedreplan:
+  name: Bottenvåning
+  entities:
+    - switch.fin_entre
+    - switch.tv_rum
+    - switch.tv_rum2
+    - switch.vardagsrum
+    - switch.vitrinskap
+    - switch.grov_entre
+
+lampor_ovreplan:
+  name: Övervåning
+  entities:
+    - switch.sovrum
+
+ytterbelysning:
+  name: Ytterbelysning
+  entities:
+    - switch.ytterbelysning_hus
+    - switch.ytterbelysning_garage
+    - switch.05665700bcddc295da22
+
+lampor_alla:
+  name: Alla lampor
+  #  view: no
+  entities:
+    - group.lampor_nedreplan
+    - group.lampor_ovreplan
+
+morgonbelysning:
+  name: Morgonbelysning
+  #view: no
+  entities:
+    - switch.ytterbelysning_hus
+    - switch.ytterbelysning_garage
+    - switch.fin_entre
+    - switch.vardagsrum
+    - switch.grov_entre
+
+utomhus:
+  name: Utomhus
+  entities:
+    - sun.sun
+    - sensor.yr_symbol
+    - sensor.yr_temperature
+    - sensor.yr_humidity
+    - sensor.yr_cloudiness
