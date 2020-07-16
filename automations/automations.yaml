@@ -1,0 +1,52 @@
+##############################
+# Tänd
+##############################
+- alias: Tand alla lampor 15 min innan solnedgång 
+  trigger:
+    - event: sunset
+      platform: sun
+      offset: -00:15:00
+  condition: []
+  action:
+    - service: homeassistant.turn_on
+      entity_id: group.lampor_alla
+
+
+##############################
+# Lampor - Släck nedreplan 
+##############################
+- alias: Slack Nedreplan - vardagar
+  trigger:
+    - at: "01:00"
+      platform: time
+  condition:
+    condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - sun
+  action:
+    - delay: "00:{{ (range(1, 15)|random|int) }}:00"
+    - service: homeassistant.turn_off
+      entity_id: group.lampor_nedreplan
+
+##############################
+# Lampor - Släck nedreplan 
+##############################
+- alias: Slack Nedreplan - helger
+  trigger:
+    - at: "01:30"
+      platform: time
+  condition:
+    condition: time
+    weekday:
+      - sat
+      - sun
+  action:
+    - delay: "00:{{ (range(1, 30)|random|int) }}:00"
+    - service: homeassistant.turn_off
+      entity_id: group.lampor_nedreplan
+
+

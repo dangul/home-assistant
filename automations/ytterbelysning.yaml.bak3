@@ -1,0 +1,74 @@
+##############################
+# Tänd Ytterbelysning
+##############################
+#
+- alias: Ytterbelysning Tand
+  trigger:
+    - entity_id: switch.rela_3
+      platform: state
+      from: 'off'
+      to: 'on'
+  condition: []
+  action:
+    - service: homeassistant.turn_on
+      entity_id: group.ytterbelysning
+    - delay:
+        seconds: 2
+    - service: homeassistant.turn_on
+      entity_id: group.ytterbelysning
+    - delay:
+        seconds: 2
+    - service: homeassistant.turn_on
+      entity_id: group.ytterbelysning
+
+
+
+##############################
+## Vardagar Släck
+###############################
+- alias: Ytterbelysning Slack vardagar
+  trigger:
+    - at: "23:59"
+      platform: time
+  condition:
+    condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - sun
+  action:
+    - delay: "00:{{ (range(1, 30)|random|int) }}:00"
+    - service: homeassistant.turn_off
+      entity_id: group.ytterbelysning
+    - delay:
+        seconds: 2
+    - service: homeassistant.turn_off
+      entity_id: group.ytterbelysning
+    - delay:
+        seconds: 2
+    - service: homeassistant.turn_off
+      entity_id: group.ytterbelysning
+
+
+##############################
+# Helger Släck
+##############################
+- alias: Ytterbelysning Slack helger
+  trigger:
+    - at: "02:30"
+      platform: time
+  condition:
+    condition: time
+    weekday:
+      - sat
+      - sun
+  action:
+    - delay: "00:{{ (range(1, 15)|random|int) }}:00"
+    - service: homeassistant.turn_off
+      entity_id: group.ytterbelysning
+    - service: homeassistant.turn_off
+      entity_id: group.ytterbelysning
+    - service: homeassistant.turn_off
+      entity_id: group.ytterbelysning

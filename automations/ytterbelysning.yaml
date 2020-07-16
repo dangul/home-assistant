@@ -1,0 +1,46 @@
+##############################
+# Tänd Ytterbelysning
+##############################
+#
+- alias: Ytterbelysning Tand
+  trigger:
+    - entity_id: switch.rela_3
+      platform: state
+      from: 'off'
+      to: 'on'
+  condition: []
+  action:
+    - service: homeassistant.turn_on
+      entity_id: group.ytterbelysning
+    - delay:
+        seconds: 1
+    - service: homeassistant.turn_on
+      entity_id: group.ytterbelysning
+    - delay:
+        seconds: 2
+    - service: homeassistant.turn_on
+      entity_id: group.ytterbelysning
+
+
+
+##############################
+## Släck Ytterbelysning
+###############################
+- alias: Ytterbelysning Slack 
+  trigger:
+    - entity_id: switch.rela_3
+      platform: state
+      from: 'on'
+      to: 'off'
+  condition: []
+  action:
+    - service: homeassistant.turn_off
+      entity_id: group.ytterbelysning
+    - delay:
+        seconds: 1
+    - service: homeassistant.turn_off
+      entity_id: group.ytterbelysning
+    - delay:
+        seconds: 2
+    - service: homeassistant.turn_off
+      entity_id: group.ytterbelysning

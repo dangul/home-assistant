@@ -1,0 +1,103 @@
+##############################
+# Tänd Ytterbelysning
+##############################
+#
+# Tänd tidigare om molnigt
+- alias: Ytterbelysning Tänd Molnigt
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: "-00:20:00"
+  condition: 
+    condition: numeric_state
+    entity_id: sensor.yr_cloudiness 
+    above: 80 
+  action:
+    - service: homeassistant.turn_on
+      entity_id: group.ytterbelysning
+    - delay:
+        seconds: 2
+    - service: homeassistant.turn_on
+      entity_id: group.ytterbelysning
+    - delay:
+        seconds: 2
+    - service: homeassistant.turn_on
+      entity_id: group.ytterbelysning
+
+# Om klart väder tänd vid solnedgång
+- alias: Ytterbelysning Tänd Klart
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: "+00:30:00"
+  condition: 
+    condition: numeric_state
+    entity_id: sensor.yr_cloudiness
+    below: 80
+  action:
+    - service: homeassistant.turn_on
+      entity_id: group.ytterbelysning
+    - delay:
+        seconds: 2
+    - service: homeassistant.turn_on
+      entity_id: group.ytterbelysning
+    - delay:
+        seconds: 2
+    - service: homeassistant.turn_on
+      entity_id: group.ytterbelysning
+
+
+
+##############################
+## Vardagar Släck
+###############################
+- alias: Ytterbelysning Släck vardagar
+  trigger:
+    - at: "23:00"
+      platform: time
+  condition:
+    condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - sun
+  action:
+    - delay: "00:{{ (range(1, 30)|random|int) }}:00"
+    - service: homeassistant.turn_off
+      entity_id: group.ytterbelysning
+    - delay:
+        seconds: 2
+    - service: homeassistant.turn_off
+      entity_id: group.ytterbelysning
+    - delay:
+        seconds: 2
+    - service: homeassistant.turn_off
+      entity_id: group.ytterbelysning
+
+
+
+
+
+
+##############################
+# Helger Släck
+##############################
+- alias: Ytterbelysning Släck helger
+  trigger:
+    - at: "02:00"
+      platform: time
+  condition:
+    condition: time
+    weekday:
+      - sat
+      - sun
+  action:
+    - delay: "00:{{ (range(1, 15)|random|int) }}:00"
+    - service: homeassistant.turn_off
+      entity_id: group.ytterbelysning
+    - service: homeassistant.turn_off
+      entity_id: group.ytterbelysning
+    - service: homeassistant.turn_off
+      entity_id: group.ytterbelysning

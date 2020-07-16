@@ -1,0 +1,59 @@
+##############################
+# Chillibelysning
+##############################
+
+# Tänk Vardagar
+- alias: Chillibelysning på Vardagar
+  trigger:
+    - at: "07:15"
+      platform: time
+  condition:
+     - condition: state
+       entity_id: binary_sensor.workday_sensor
+       state: 'on'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.chillibelysning
+
+# Släck Vardagar
+- alias: Chillibelysning av Vardagar
+  trigger:
+    - at: "22:00"
+      platform: time
+  condition:
+     - condition: state
+       entity_id: binary_sensor.workday_sensor
+       state: 'on'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.chillibelysning
+
+#########################
+# Helger
+#########################
+
+# Tänd Helg
+- alias: Chillibelysning på Helg
+  trigger:
+    - at: "07:15"
+      platform: time
+  condition:
+    - condition: state
+      entity_id: binary_sensor.workday_sensor
+      state: 'off'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.chillibelysning
+
+# Släck Helg
+- alias: Chillibelysning av Helg
+  trigger:
+    - at: "23:30"
+      platform: time
+  condition:
+   - condition: state
+     entity_id: binary_sensor.workday_sensor
+     state: 'off'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.chillibelysning
