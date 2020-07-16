@@ -28,10 +28,9 @@
 ###############################
 - alias: Ytterbelysning Slack 
   trigger:
-    - entity_id: switch.rela_3
-      platform: state
-      from: 'on'
-      to: 'off'
+    - platform: sun
+      event: sunrise
+      offset: "-00:05:00"
   condition: []
   action:
     - service: homeassistant.turn_off
